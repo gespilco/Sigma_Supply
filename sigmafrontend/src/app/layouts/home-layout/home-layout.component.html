@@ -1,0 +1,78 @@
+<div class="example-container">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+      <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+    </button>
+
+    <h1 class="example-app-name" >SISTEMA INTEGRAL DE ASIGNACION DE RECURSOS</h1>
+
+    <span class="example-spacer"></span>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/perfil">
+        <mat-icon>account_box</mat-icon>
+        <span>Mi Perfil</span>
+      </button>
+      <button mat-menu-item routerLink="/login" (click)="sidenav.opened = false">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Cerrar Sesión</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #sidenav mode="side" style="width: 390px; padding-left: 20px;padding-right: 20px">
+      <p></p>
+      <p style="text-align: center">
+        <img src="../../../assets/img/logo_supply.png" width="150">
+      </p>
+      <p></p>
+      <mat-divider></mat-divider>
+      <p></p>
+      <p class="font-weight-bold">PLANIFICACION</p>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/" style="cursor: pointer">
+        <mat-icon>search</mat-icon>
+        <span>Registrar Solicitud de Orden de Servicio</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/" style="cursor: pointer">
+        <mat-icon>insert_drive_file</mat-icon>
+        <span>Aprobar Solicitud de Orden de Servicio</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/" style="cursor: pointer">
+        <mat-icon>insert_drive_file</mat-icon>
+        <span>Asignar/Reasignar Recursos</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/" style="cursor: pointer">
+        <mat-icon>star_rate</mat-icon>
+        <span>Asignar / Reasignar tecnico</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/asignar-tecnico-orden" style="cursor: pointer">
+        <mat-icon>star_rate</mat-icon>
+        <span>Programar Visita Tecnica</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/" style="cursor: pointer">
+        <mat-icon>star_rate</mat-icon>
+        <span>Reprogramar Visita Tecnica</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/" style="cursor: pointer">
+        <mat-icon>star_rate</mat-icon>
+        <span>Generar Orden de Servicio</span>
+      </button>
+      <mat-divider></mat-divider>
+      <p></p>
+      <p class="font-weight-bold">EJECUCION</p>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/generar-hoja-ruta" style="cursor: pointer">
+        <mat-icon>search</mat-icon>
+        <span>Generar Hoja de Ruta</span>
+      </button>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

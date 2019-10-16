@@ -1,0 +1,73 @@
+EL MENU debe tener sólo las siguientes opciones(linkeadas):
+PLANIFICACION
+Registrar Solicitud de Servicio
+Aprobar Solicitud de Servicio
+Generar Orden de Servicio
+Asignar/Reasignar Tecnico
+Asignar/Reasignar Recurso
+Programar/Reprogramar Visita Técnica
+EJECUCION
+Generar Hoja de Ruta
+
+**ECUS REGISTRAR SOLICITUD SERVICIOS
+EN PANTALLA Registrar Solicitud Servicio y PANTALLA Editar Solicitud  realizar lo siguiente:
+- Agregar Campo para mostrar el número de solicitud
+- Tener en cuenta que el combo de subtipo servicio debe estar debajo del combo de tipo servicio, es decir, para todos los campos del formulario deben estar uno debajo 
+del otro y no a los costados, cuadrar para que se vea estetico, por ejemplo el campo descripcion de la solicitud esta desalineado respecto a los demas campos
+-considerar que si el tipo de servicio es instalacion o mantenimiento correctivo , tener la posibilidad de registrar si  tipo de atencion = emergencia  o no emergencia
+-considerar que si es mantenimiento preventivo setar en  el nuevo campo   tipo de atencion = periodico
+- Agregar la opción de poder registrar la prioridad (alta, media, baja) [control de seleccion] 
+- Agregar Campo para ingresar Solicitante(Responsable de Ventas)
+- Agregar Campo para ingresar Contacto  [Nombre de la persona contacto del cliente]
+- Agregar Campo para ingresar Dirección
+- Agregar Campo para ingresar Zona
+- Agregar Campo para ingresar Telefono 
+- Agregar Campo para ingresar fecha inicio
+- Agregar Campo para ingresar fecha fin
+- Borrar campos Recursos,RECURSO,  Cantidad Recursos, Tecnicos,TECNICO y Cantidad Tecnicos y botones Agregar
+EN GRILLA PRINCIPAL
+- Borrar de la grilla principal RECURSOS,CANTIDAD REC,  ESPECIALIDAD , CANT TECNICOS y PERIODO EJECUCION  
+- El campo ESTADO de la grilla principal debe tener el valor de "SOLICITUD PENDIENTE"
+
+**ECUS APROBAR SOLICITUD SERVICIO
+EN PANTALLA VER SOLICITUD SERVICIO
+- Borrar campos RECURSO, Cantidad Recursos,TECNICO y Cantidad Tecnicos
+- Agregar Campo para mostrar  la prioridad (alta, media , baja) 
+- Agregar Campo para mostrar  el tipo de atención (periodica, emergencia) 
+- Agregar Campo para mostrar Nombre del Responsable de Ventas
+- Agregar Campo para mostrar Nombre de la persona contacto del cliente
+- Agregar Campo para mostrar Dirección del cliente
+- Agregar Campo para mostrar Telefono del Cliente
+pd: en caso de rechazar permitirle ingresar la causa del rechazo y el estado queda en "SOLICITUD PENDIENTE"
+en caso se apruebe el estado queda en "SOLICITUD APROBADA"
+EN GRILLA PRINCIPAL
+- Borrar de la grilla principal RECURSOS,CANTIDAD REC,  ESPECIALIDAD , CANT TECNICOS y PERIODO EJECUCION  
+- El campo ESTADO de la grilla principal debe tener el valor de "SOLICITUD PENDIENTE"
+
+**ECUS GENERAR ORDEN DE SERVICIO
+EN LA PANTALLA GENERAR ORDEN DE SERVICIO (instalaciones y mantenimientos preventivos, correctivos)
+cargar datos de las solicitudes aprobadas
+-Agregar la opción de poder actualizar la prioridad (alta, media, baja) [control de seleccion]
+-Tener la opcion de ingresar la Complejidad (alta, media, baja) [control de seleccion]
+-Tener un campo para ingresar informacion ///como por ejemplo el detalle de las TAREAS a realizar para determinado servicio
+-Tener la opcion de actualizar fecha inicio
+-Tener la opcion de actualizar fecha fin
+-cargar informacion de la tabla parametros filtrando por los datos de la solicitud aprobada de la cual se desea generar su orden de servicio //(la tabla parametros viene hacer el historial de asignaciones y atenciones ,tambien, podria venir a ser la informacion registrada luego de haber realizado el diagnostico tecnico en el cliente)
+tener la posibilidad de que el usuario pude ingrese ingresar el requerimiento minimo a su criterio
+- Mostrar el coordinador y responsable de logistica asignados automaticamente deacuerdo a la zona  //el coordinador de operaciones es el que asignara los tecnicos y el responsable de logistica es el que asignara los recursos fisicos
+boton de guardar (la informacion se guarda en la orden de servicio)
+EN LA GRILLA PRINCIPAL
+- El campo ESTADO de la grilla principal debe tener el valor de "SOLICITUD APROBADA"
+https://blog.luz.vc/es/que-es/orden-de-servicio-que-y-c%C3%B3mo-controlar/
+https://elcuartodeangel.wordpress.com/sistema-ordenes-de-servicios-prestados/
+
+**ECUS ASIGNAR RECURSO
+Realizar las asignaciones de los recursos a la orden de servicio (ORDEN DE SERVICIO CON ESTADO=PENDIENTES y SOLICITUDES CON ESTADO=APROBADO)//tener como referencia  ECU asignar tecnico
+
+**ECUS ASIGNAR TECNICO
+Integrar el ecus asignar tecnico desarrollado que esta subido al git a este proyecto nuevo que se esta armando
+
+**ECUS HOJA DE RUTA
+Integrar el ecus hoja de ruta desarrollado que esta subido al git a este proyecto nuevo que se esta armando
+
+----------------CONSULTA: En lugar de mostrar pop up hay alguna forma de hacerlo UX ??

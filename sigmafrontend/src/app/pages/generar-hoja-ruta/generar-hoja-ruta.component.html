@@ -1,0 +1,124 @@
+<div class="container-fluid">
+  <div class="title-block">
+    <p class="page-title">Hoja de Ruta</p>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row form-group d-flex align-items-center">
+            <div class="col-sm-2 col-2">
+              <label dlabels="dlabels" class="control-label">Tecnico:</label>
+            </div>
+            <div class="col-sm-3 col-3">
+
+              <mat-form-field style="width: 100%">
+                <mat-label>Tecnico</mat-label>
+                <mat-select [(ngModel)]="busqueda.id_tecnico" name="tecnico">
+                  <mat-option *ngFor="let tecnico of listaTecnico" [value]="tecnico.id_tecnico">
+                    {{ tecnico.nombre+' ' +tecnico.apellido_paterno +' ' + tecnico.apellido_materno }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-2 col-2">
+              <label dlabels="dlabels" class="control-label">Fecha:</label>
+            </div>
+            <div class="col-sm-3 col-3">
+              <mat-form-field style="width: 100%">
+                <input matInput [matDatepicker]="pickerFin" placeholder="dd/MM/aaaa" readonly
+                  [(ngModel)]="busqueda.fecha">
+                <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+                <mat-datepicker #pickerFin></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="float-right">
+                <button class="btn btn-info mr-1" (click)="ConsultaPrincipal(busqueda)" type="button" id="btnBuscar">
+                  <i class="fa fa-search"></i> Buscar</button>
+                <button class="btn btn-light mr-1" (click)="LimpiarControles()" type="button" id="btnLimpiar">
+                  <i class="icon icon-limpiar"></i> Limpiar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="card card-default card-principal">
+    <div class="card-body">
+      <div class="group-box">
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-sm-12">
+
+            <table class="table table-hover table-bordered table-responsive table-principal">
+              <thead class="table-active">
+                <th>NRO</th>
+                <th>PROGRAMACIÓN</th>
+                <th>SERVICIOS</th>
+                <th>TECNICOS </th>
+                <th>FECHA VISITA</th>
+                <th>DURACIÓN</th>
+                <th>ESTADO</th>
+                <th>ORDEN</th>
+                <th>GENERAR HR</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let programaVisita of listaProgramaVisita; let i = index">
+                  <td class="xs-hidden text-center">{{programaVisita.nro_pv}}</td>
+                  <td class="xs-hidden text-center">{{programaVisita.codigo_visita}}</td>
+                  <td class="xs-hidden text-center">
+                    <p *ngFor="let item of programaVisita.lista_hoja_ruta; let y = index">
+                      <span>{{item.numero_solicitud+' - ' + item.descripcion}} </span>
+                    </p></td>
+                  <td class="xs-hidden text-center">
+                    <p *ngFor="let item of programaVisita.lista_hoja_ruta; let y = index">
+                      <span >
+                        <!-- {{item.numero_solicitud}} : -->
+                        <p *ngFor="let val of item.lista_tecnicos" >
+                          <span>{{ val.nombre+' '+val.apellido_paterno+' '+val.apellido_materno}} </span>
+                        </p>
+                      </span>
+                    </p>
+                  </td>
+                  <td class="xs-hidden text-center">{{programaVisita.fecha_visita}}</td>
+                  <td class="xs-hidden text-center">{{programaVisita.duracion}}</td>
+                  <td class="xs-hidden text-center">{{programaVisita.nro_pv}}</td>
+                  <td class="xs-hidden text-center">{{programaVisita.activo? "En Proceso":"Terminado"}}</td>
+                  <td class="xs-hidden text-center">
+                    <a id="btnVer" (click)="openModalMapa(i)" title="Generar Ruta"><img
+                        src="../../../assets/img/icons/hoja_ruta.svg" style="height: 25px;width:25px;" /></a>
+                  </td>
+                  <!-- <td>
+                      <a id="btnVer" (click)="verHojaRuta(programaVisita)" title="Ver Puntos de Visita"><img src="../../../assets/img/icons/punto_ruta.svg" style="height: 25px;width:25px;" /></a>
+                  </td>
+                  <td>
+                      <a id="btnGenerar" (click)="generarHojaRuta(programaVisita)" title="Generar Hoja de Ruta"><img src="../../../assets/img/icons/genera_hoja_ruta.svg" style="height: 25px;width:25px;" /></a>
+                     <button class="btn btn-primary" id="btnGenerar" type="button"
+                      (click)="generarHojaRuta(programaVisita)">Generar HR</button>
+                  </td> -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-12">
+            <nav class="pt-4 pl-3 float-right">
+              <pagination [totalItems]="totalRegistros" [itemsPerPage]="numPaginasMostrar" [boundaryLinks]="true"
+                previousText="&lsaquo;" nextText="&rsaquo;" [rotate]="false" firstText="&laquo;" lastText="&raquo;"
+                [maxSize]="5" (pageChanged)="cambiarPagina($event)">
+              </pagination>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
