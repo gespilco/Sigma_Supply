@@ -1,0 +1,49 @@
+$link-color: #3f51b5;
+$link-hover-color: currentColor;
+$link-hover-decoration: none;
+$label-margin-bottom: 0;
+
+$grid-breakpoints: (
+  xs: 0, // handset portrait (small, medium, large) | handset landscape (small)
+  sm: 600px, // handset landscape (medium, large) | tablet portrait(small, large)
+  md: 960px, //  tablet landscape (small, large)
+  lg: 1280px, // laptops and desktops
+  xl: 1600px // large desktops
+);
+
+$container-max-widths: (
+  sm: 600px,
+  md: 960px,
+  lg: 1280px,
+  xl: 1600px
+);
+
+// Colors
+$color-white: #FFFFFF;
+$color-light: #FAFAFA;
+$color-grey: #888888;
+$color-brown: #B18D5B;
+$color-black: #000000;
+
+$theme-colors: (
+        "white": $color-white,
+        "light": $color-light,
+        "grey": $color-grey,
+        "brown": $color-brown,
+        "black": $color-black,
+);
+
+// Body
+$body-bg: $color-light;
+$body-color: $color-grey;
+
+// Misc
+$box-shadow: 0 0 50px rgba(0, 0, 0, 0.25);
+
+// Typography
+$font-family-sans-serif: 'Source Sans Pro', sans-serif;
+
+// Button
+$btn-border-radius: 0;
+$btn-border-width: 2px;
+$btn-font-weight: bold;

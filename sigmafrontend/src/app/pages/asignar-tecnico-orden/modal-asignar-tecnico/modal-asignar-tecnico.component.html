@@ -1,0 +1,107 @@
+<div class="modal-header">
+        <h4 class="modal-title">Asignar Tecnico</h4>
+      
+      </div>
+      <div class="modal-body">
+        <p>Requerimiento Minimo</p>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-sm-12">
+            <table class="table table-hover table-bordered table-responsive table-principal">
+              <thead class="table-active">
+                <tr>
+                  <th>Nro.</th>
+                  <th>Cantidad</th>
+                  <th>Especialidad</th>
+                  <!-- <th>Tipo Servicio</th> -->
+                  <th>Calificacion</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let parametro of listaParametroSistema; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{parametro.valores}}</td>
+                  <td>{{parametro.especialidad}}</td>
+                  <td>{{ ">="+parametro.cantidad}} <i class="fa fa-star" aria-hidden="true"></i></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-sm-2 col-2 d-flex align-items-center">
+            <label dlabels="dlabels" class="control-label">Tecnico Recomendado: </label>
+          </div>
+          <div class="col-sm-10 col-10 combo-style">
+            <ng-select [items]="listaTecnicoAlgoritmo" bindLabel="nombre_completo" bindValue="id_tecnico"
+              [(ngModel)]="selectTecnico">
+              <ng-template ng-option-tmp let-item="item" let-index="index">
+                <div class="row div-{{item.tipo_lista}}" style=" border-bottom: 1px solid #000;border-radius: 2px;">
+                  <div class="col-md-4">
+                    <img src="/assets/img/{{item.archivo_foto}}" class="col-md-4" style="width: 100px;height: 100px;" />
+                  </div>
+                  <div class="col-md-8">
+                    <div><h3>{{item.nombre_completo}}</h3></div>
+                    <div>{{item.calificacion}} <i class="fa fa-star" aria-hidden="true"></i></div>
+                    <div>{{item.especialidad}}</div>
+                    
+                  </div>
+                </div>
+              </ng-template>
+            </ng-select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="float-right">
+              <button class="btn btn-light mr-1" (click)="LimpiarControles()" type="button" id="btnLimpiar">
+                <i class="icon icon-limpiar"></i> Limpiar</button>
+              <span class="float-right" style="color: #00a3e8">
+                <button class="btn btn-danger" type="button" id="btnAgregarTecnico" (click)="buscarTecnico(selectTecnico)">
+                  <i class="icon icon-checklist"></i> Agregar Tecnico</button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <p></p>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-sm-12">
+            <table class="table table-hover table-bordered table-responsive table-principal">
+              <thead class="table-active">
+                <tr>
+                  <th>Nro.</th>
+                  <th>Orden</th>
+                  <th>Codigo</th>
+                  <th>Especialidad de Tecnico</th>
+                  <th>Datos de Tecnico</th>
+                  <th>Profesión</th>
+                  <th>Eliminar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let tecnico of listaTecnicoAgregados; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{ordenServicioPase.numero_orden}}</td>
+                  <td>{{tecnico.codigo_tecnico}}</td>
+                  <td>{{tecnico.especialidad}}</td>
+                  <td>{{tecnico.apellido_paterno}} {{tecnico.apellido_materno}}, {{tecnico.nombre}}</td>
+                  <td>{{tecnico.profesion}}</td>
+                  <td class="xs-footer-lista xs-text-right">
+                    <div class="xs-display">
+                      <a href="javascript:void(0)" (click)="eliminarTecnico(i)" class="btn-icon">
+                        <i class="fa fa-trash"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success" id="btnGuardar" readonly (click)="AsignarTecnicos()"
+            [hidden]=!bEstado>Guardar</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-plomo" id="btnCancelar" type="button" (click)="closeModal()">Cerrar</button>
+      </div>
