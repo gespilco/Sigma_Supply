@@ -1,0 +1,20 @@
+Para las siguientes ECUS:
+por el momento NO se realizará lo siguiente:
+
+
+**ECUS REGISTRAR SOLICITUD SERVICIOS
+-considerar que si el tipo de servicio es instalacion o mantenimiento correctivo , tener la posibilidad de registrar si  tipo de atencion = emergencia  o no emergencia
+-considerar que si es mantenimiento preventivo setar en  el nuevo campo   tipo de atencion = periodico
+EN GRILLA PRINCIPAL
+- Borrar de la grilla principal PERIODO EJECUCION 
+
+
+**ECUS APROBAR SOLICITUD SERVICIO
+EN GRILLA PRINCIPAL
+- Borrar de la grilla principal PERIODO EJECUCION 
+
+
+**ECUS GENERAR ORDEN DE SERVICIO
+-Tener la opcion de ingresar fecha inicio 
+-Tener la opcion de ingresar fecha  fin 
+-Tener la posibilidad de que el usuario pude ingrese ingresar el requerimiento minimo a su criterio
